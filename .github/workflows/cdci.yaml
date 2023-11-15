@@ -22,6 +22,9 @@ jobs:
         with:
           node-version-file: ".node-version"
 
+      - name: Pull latest code
+        run: git pull origin main
+
       - name: Install yarn
         run: npm install -g yarn
 
@@ -35,7 +38,7 @@ jobs:
         run: kill $(lsof -t -i:9292) || true && echo "Process killed" || echo "No process to kill"
 
       - name: Deploy
-        run: yarn start || true && echo "Process started" || echo "No process to start"
+        run: yarn start
 
       - name: Clean up
         if: always()
