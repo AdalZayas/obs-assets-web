@@ -35,7 +35,7 @@ jobs:
         run: yarn build
 
       - name: Deploy with PM2
-        run: echo "Deploying with PM2" > deploy.log && pm2 deploy ecosystem.config.js production --force >> deploy.log
+        run: echo "Deploying with PM2" > deploy.log && pm2 start yarn --name "app" -- start >> deploy.log
 
       - name: Clean up
         if: always()
