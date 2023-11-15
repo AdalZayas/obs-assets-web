@@ -6,23 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
-      <Card>
-        <CardHeader>
-          <CardTitle>Card Title</CardTitle>
-          <CardDescription>Card Description</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>Card Content</p>
-        </CardContent>
-        <CardFooter>
-          <p>Card Footer</p>
-        </CardFooter>
-      </Card>
-    </main>
+    <div className="flex m-4 bg-none">
+      <Card className=" border-[28px] w-[1080px] h-[720px] animated-border "></Card>
+    </div>
   );
 }
