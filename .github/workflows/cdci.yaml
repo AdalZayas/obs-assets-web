@@ -50,7 +50,7 @@ jobs:
         run: yarn build
 
       - name: Deploy with PM2
-        run: echo "Deploying with PM2" > deploy.log && pm2 start yarn --name "app" -- start >> deploy.log
+        run: deploy.log && pm2 start "npm run start" -i max --name "app"
 
       - name: Clean up
         if: always()
