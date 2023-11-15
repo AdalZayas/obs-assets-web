@@ -35,7 +35,7 @@ jobs:
         run: kill $(lsof -t -i:9292)
 
       - name: Deploy
-        run: yarn start
+        run: yarn start | tee /dev/tty | grep -m 1 "Server started" && echo "Server started"
 
       - name: Clean up
         if: always()
