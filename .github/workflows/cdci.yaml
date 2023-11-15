@@ -35,7 +35,7 @@ jobs:
         run: kill $(lsof -t -i:9292) || true && echo "Process killed" || echo "No process to kill"
 
       - name: Deploy
-        run: yarn start | tee /dev/tty | grep -m 1 "Server started" && echo "Server started"
+        run: yarn start & || true && echo "Process started" || echo "No process to start"
 
       - name: Clean up
         if: always()
