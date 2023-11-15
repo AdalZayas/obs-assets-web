@@ -32,7 +32,7 @@ jobs:
         run: yarn build
 
       - name: Kill existing process
-        run: kill $(lsof -t -i:9292)
+        run: kill $(lsof -t -i:9292) || true && echo "Process killed" || echo "No process to kill"
 
       - name: Deploy
         run: yarn start | tee /dev/tty | grep -m 1 "Server started" && echo "Server started"
