@@ -25,6 +25,21 @@ jobs:
       - name: Pull latest code
         run: git pull origin main
 
+      - name: Install PM2 globally (if not already installed)
+        run: npm install -g pm2
+
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+            ${{ runner.os }}-node-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: PM2 init (if not already initialized)
+        run: pm2 init
+
       - name: Install yarn
         run: npm install -g yarn
 
