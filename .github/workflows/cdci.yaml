@@ -34,11 +34,8 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Kill existing process
-        run: kill $(lsof -t -i:9292) || true && echo "Process killed" || echo "No process to kill"
-
-      - name: Deploy
-        run: yarn start
+      - name: Deploy with PM2
+        run: echo "Deploying with PM2" > deploy.log && pm2 deploy ecosystem.config.js production --force >> deploy.log
 
       - name: Clean up
         if: always()
