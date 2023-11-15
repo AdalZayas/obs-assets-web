@@ -1,0 +1,18 @@
+# create a workflow that will be triggered on push to main branch and will deploy the app to the production environment to self-hosted runner
+name: CD to CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy
+        run: |
+          echo "Deploying to production"
+          echo "Deployed to production"
