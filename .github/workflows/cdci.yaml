@@ -33,9 +33,6 @@ jobs:
             ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
             ${{ runner.os }}-node-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: PM2 init (if not already initialized)
-        run: pm2 init
-
       - name: Install yarn
         run: npm install -g yarn
 
