@@ -17,11 +17,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".node-version"
 
-      - name: Build Next.js App
-        run: npm run build
+      - name: Install yarn
+        run: npm install -g yarn
 
-      - name: Deploy to Local Server
-        run: npm start
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        run: yarn start
+
+      - name: Clean up
+        if: always()
+        run: npm uninstall -g yarn
